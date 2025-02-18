@@ -1,0 +1,24 @@
+To avoid unexpected results, consider these strategies:
+
+1. **Avoid nesting:** If possible, restructure your CSS to avoid nesting percentages within `calc()`.  This greatly simplifies the calculation.
+
+2. **Use absolute units:**  Instead of percentages, use `px`, `em`, or `rem` units for more predictable results. 
+
+3. **Use variables:** Using CSS variables can improve readability and maintainability when dealing with complex calculations. This makes it easier to update values and track dependencies.
+
+```css
+:root {
+  --container-width: 50%;
+  --inner-margin: 20px;
+}
+
+.container {
+  width: var(--container-width);
+}
+
+.inner {
+  width: calc(100% - var(--inner-margin));
+}
+```
+
+By following these guidelines, you can minimize the risk of encountering unexpected behavior when using `calc()` with percentages in CSS.
