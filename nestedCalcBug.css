@@ -1,0 +1,13 @@
+The CSS property `calc()` is used to perform calculations within CSS.  However, there's a lesser-known issue where using `calc()` with percentages and other units in nested contexts can lead to unexpected results.  For example:
+
+```css
+.container {
+  width: 50%;
+}
+
+.inner {
+  width: calc(100% - 20px);
+}
+```
+
+In this case, the `100%` inside `calc()` refers to the *parent* element's width, not the viewport or document. So the inner element's width will be calculated relative to the `.container`'s width and not the entire viewport, potentially causing unexpected layout behavior.  This is especially tricky to debug when dealing with many nested elements and complex layout structures.
